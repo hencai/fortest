@@ -1,0 +1,25 @@
+new Vue({
+    data: {
+        products:[],
+        searchKeyword: '',
+        currentPage:1,
+        itemsPerPage: 5
+    }
+    computed: {
+        paginatedData() {
+            startIndex = (currentPage - 1) * itemsPerPage
+            endIndex = startIndex + itemsPerPage
+            return products.filter(product => product.includes(searchKeyword).slice(startIndex, endIndex))
+        }
+    },
+    methods: {
+        handleCurrentChange(page) {
+            currentPage = page
+        }
+    },
+    created() {
+        console.log('获取一些数据');
+    }
+})
+
+
